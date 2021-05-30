@@ -13,18 +13,41 @@ public class JpaMain {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         EntityTransaction tx = entityManager.getTransaction();
+
         tx.begin();
 
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("hansol");
+        try {
+            /***
+             * Member CREATE
+             */
+            // Member member = new Member();
+            // member.setId(2L);
+            // member.setName("kwonyong");
+            // entityManager.persist(member);
 
-        entityManager.persist(member);
+            /***
+             * Member READ
+             */
+            Member findMember = entityManager.find(Member.class, 2L);
+            System.out.println(findMember.getId());
+            System.out.println(findMember.getName());
 
-        tx.commit();
+            /***
+             * Member DELETE
+             */
+            // entityManager.remove(findMember);
 
-        entityManager.close();
+            /***
+             * Member UPDATE --> commit시점에서 변경사항 체크 후 update query 생성
+             */
+            findMember.setName("hansol");
 
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            entityManager.close();
+        }
         entityManagerFactory.close();
     }
 }
