@@ -22,20 +22,20 @@ public class JpaMain2 {
 
         try {
 
-            // 비영속 상태
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("edy");
-
-            // 영속
-            System.out.println("=== BEFORE ===");
-            entityManager.persist(member);
-            System.out.println("=== AFTER ===");
-
-            Member findMember = entityManager.find(Member.class, 100L);
-
-            System.out.println("id = " + findMember.getId());
-            System.out.println("name = " + findMember.getName());
+//            // 비영속 상태
+//            Member member = new Member();
+//            member.setId(100L);
+//            member.setName("edy");
+//
+//            // 영속
+//            System.out.println("=== BEFORE ===");
+//            entityManager.persist(member);
+//            System.out.println("=== AFTER ===");
+//
+//            Member findMember = entityManager.find(Member.class, 100L);
+//
+//            System.out.println("id = " + findMember.getId());
+//            System.out.println("name = " + findMember.getName());
 
             tx.commit();
         } catch (Exception e) {
