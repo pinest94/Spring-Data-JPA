@@ -7,6 +7,7 @@ import java.util.Date;
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     // nullable의 false로 설정하면 DB에서 not null이 되도록 만들 수 있다.
@@ -18,7 +19,7 @@ public class Member {
     private Integer age;
 
     // EnumType
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,7 +39,6 @@ public class Member {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }

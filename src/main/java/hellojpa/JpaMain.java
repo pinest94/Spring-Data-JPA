@@ -43,7 +43,6 @@ public class JpaMain {
 //            findMember.setName("hansol");
 
             Member member = new Member();
-            member.setId(3L);
             member.setUsername("minsu");
             member.setRoleType(RoleType.GUEST);
 
