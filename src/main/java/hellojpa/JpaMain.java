@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -24,20 +25,17 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("hansol");
-            member.setTeam(team);
+            member.changeTeam(team);
             entityManager.persist(member);
 
+            // team.getMemberList().add(member);
+
             // 이 두가지 메서드가 의미하는 바를 캐치할 것!
-            entityManager.flush();
-            entityManager.clear();
+            // entityManager.flush();
+            // entityManager.clear();
 
             // 위의 2개의 메서드를 지우면 쿼리가 나가지 않는데 왜 그러는지 이해할 것!
             // 이해가 안되면 영속성 컨텍스트 공부가 제대로 안됐다는 뜻..(복습해야지)
-
-            Member findMember = entityManager.find(Member.class, member.getId());
-
-            Team findTeam = findMember.getTeam();
-            System.out.println("team is " + findTeam.getName());
 
             tx.commit();
         } catch (Exception e) {

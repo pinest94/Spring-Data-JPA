@@ -6,7 +6,8 @@ import java.util.Date;
 @Entity
 public class Member {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
 
@@ -40,7 +41,8 @@ public class Member {
         return team;
     }
 
-    public void setTeam(Team team) {
+    public void changeTeam(Team team) {
         this.team = team;
+        team.getMemberList().add(this);
     }
 }
